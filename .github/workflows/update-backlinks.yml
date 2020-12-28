@@ -1,29 +1,11 @@
 name: Update backlinks
 
 on:
-  gollum
+  gollum:
+  workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          repository: ${{github.repository}}.wiki
-          path: wiki
-      - uses: actions/checkout@v2
-        with:
-          repository: sander/note-link-janitor
-          path: note-link-janitor
-      - name: Build note-link-janitor
-        run: cd note-link-janitor && yarn install && yarn run build
-      - name: Update backlinks
-        run: |
-          cd wiki
-          ../note-link-janitor/dist/index.js .
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Update backlinks" || true
-          git push
-
+      - uses: sander/note-link-janitor@v1
