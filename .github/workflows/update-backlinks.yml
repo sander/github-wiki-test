@@ -1,7 +1,7 @@
 name: Update backlinks
 
 on:
-  gollum:
+  gollum
 
 jobs:
   update:
