@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: ${{github.repository}}.wiki
-      - uses: sander/note-link-janitor@v2
+      - uses: sander/note-link-janitor@v3
